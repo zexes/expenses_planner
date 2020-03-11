@@ -22,7 +22,7 @@ class MyHomePage extends StatelessWidget {
         appBar: AppBar(
           title: Text('Flutter App'),
         ),
-        body: SingleChildScrollView(
+        body: SingleChildScrollView(//Single Child Scroll Implemented here
           child: Column(
             children: <Widget>[
               Container(
