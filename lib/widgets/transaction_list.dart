@@ -14,7 +14,7 @@ class TransactionList extends StatelessWidget {
     //    NumberFormat f = NumberFormat.currency(locale: "en_US", symbol: "€");
     NumberFormat f = NumberFormat.currency(locale: "en_US", symbol: "\$");
 
-    return Column(
+    return ListView(
       children: transactions
           .map((tx) => Card(
                   child: Row(
