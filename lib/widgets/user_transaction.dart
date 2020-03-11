@@ -39,9 +39,7 @@ class _UserTransactionsState extends State<UserTransactions> {
 //        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: <Widget>[
         NewTransaction(addTx: _addNewTransaction),
-        TransactionList(
-          transactions: _userTransactions,
-        ),
+        TransactionList(transactions: _userTransactions),
       ],
     );
   }

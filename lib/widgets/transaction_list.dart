@@ -16,42 +16,44 @@ class TransactionList extends StatelessWidget {
 
     return Container(
       height: 400,
-      child: ListView(
-        children: transactions
-            .map((tx) => Card(
-                    child: Row(
-                  children: <Widget>[
-                    Container(
-                      margin: EdgeInsets.only(left: 10, right: 15),
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          color: Colors.purple,
-                          width: 2.0,
-                        ),
-                      ),
-                      padding: EdgeInsets.all(10.0),
-                      child: Text(
-                        '${f.currencySymbol}${tx.amount}',
-                        style: kTextStyler,
-                      ),
+      child: ListView.builder(
+        itemBuilder: (ctx, index) {
+          return Card(
+            child: Row(
+              children: <Widget>[
+                Container(
+                  margin: EdgeInsets.only(left: 10, right: 15),
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color: Colors.purple,
+                      width: 2.0,
                     ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Text(
-                          '${tx.title}',
-                          style: kTextStyler.copyWith(
-                              fontSize: 16.0, color: Colors.black),
-                        ),
-                        Text(
-                            '${DateFormat.yMMMEd().format(tx.date)}', // you can use pattern too
-                            style: kTextStyler.copyWith(
-                                color: Colors.grey, fontSize: 15)),
-                      ],
-                    )
+                  ),
+                  padding: EdgeInsets.all(10.0),
+                  child: Text(
+                    '${f.currencySymbol}${transactions[index].amount}',
+                    style: kTextStyler,
+                  ),
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      '${transactions[index].title}',
+                      style: kTextStyler.copyWith(
+                          fontSize: 16.0, color: Colors.black),
+                    ),
+                    Text(
+                        '${DateFormat.yMMMEd().format(transactions[index].date)}', // you can use pattern too
+                        style: kTextStyler.copyWith(
+                            color: Colors.grey, fontSize: 15)),
                   ],
-                )))
-            .toList(),
+                )
+              ],
+            ),
+          );
+        },
+        itemCount: transactions.length,
       ),
     );
   }
