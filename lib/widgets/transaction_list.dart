@@ -25,14 +25,15 @@ class TransactionList extends StatelessWidget {
                   margin: EdgeInsets.only(left: 10, right: 15),
                   decoration: BoxDecoration(
                     border: Border.all(
-                      color: Colors.purple,
+                      color: Theme.of(context).primaryColor,
                       width: 2.0,
                     ),
                   ),
                   padding: EdgeInsets.all(10.0),
                   child: Text(
                     '${f.currencySymbol}${transactions[index].amount.toStringAsFixed(2)}',
-                    style: kTextStyler,
+                    style: kTextStyler.copyWith(
+                        color: Theme.of(context).primaryColor),
                   ),
                 ),
                 Column(
