@@ -7,6 +7,10 @@ class NewTransaction extends StatelessWidget {
 
   NewTransaction({this.addTx});
 
+  void submitData() {
+    addTx(titleController.text, double.parse(amountController.text));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -26,16 +30,14 @@ class NewTransaction extends StatelessWidget {
 //              keyboardType: TextInputType.number,
               keyboardType:
                   TextInputType.numberWithOptions(decimal: true), //IOS
+              onSubmitted: (_) => submitData,
             ),
             FlatButton(
               child: Text(
                 'Add Transaction',
                 style: TextStyle(color: Colors.purple),
               ),
-              onPressed: () {
-                addTx(
-                    titleController.text, double.parse(amountController.text));
-              },
+              onPressed: () => submitData,
             )
           ],
         ),
