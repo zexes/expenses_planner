@@ -31,7 +31,7 @@ class TransactionList extends StatelessWidget {
                   ),
                   padding: EdgeInsets.all(10.0),
                   child: Text(
-                    '${f.currencySymbol}${transactions[index].amount}',
+                    '${f.currencySymbol}${transactions[index].amount.toStringAsFixed(2)}',
                     style: kTextStyler,
                   ),
                 ),
