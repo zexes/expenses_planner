@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 
 import 'package:flutter/material.dart';
 
+import 'constants/constants.dart';
 import 'model/transaction.dart';
 
 void main() => runApp(MyApp());
@@ -15,15 +16,18 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Personal Expenses',
       theme: ThemeData(
-          primarySwatch: Colors.purple,
-          accentColor: Colors.amber,
-          fontFamily: 'Quicksand',
-          appBarTheme: AppBarTheme(
-              textTheme: ThemeData.light().textTheme.copyWith(
-                      title: TextStyle(
-                    fontFamily: "OpenSans",
-                    fontSize: 20,
-                  )))),
+        primarySwatch: Colors.purple,
+        accentColor: Colors.amber,
+        fontFamily: 'Quicksand',
+        textTheme: ThemeData.light().textTheme.copyWith(
+              title: kThemeText.copyWith(fontSize: 18),
+            ),
+        appBarTheme: AppBarTheme(
+          textTheme: ThemeData.light().textTheme.copyWith(
+                title: kThemeText,
+              ),
+        ),
+      ),
       home: MyHomePage(),
     );
   }

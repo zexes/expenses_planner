@@ -41,8 +41,7 @@ class TransactionList extends StatelessWidget {
                   children: <Widget>[
                     Text(
                       '${transactions[index].title}',
-                      style: kTextStyler.copyWith(
-                          fontSize: 16.0, color: Colors.black),
+                      style: Theme.of(context).textTheme.title,
                     ),
                     Text(
                         '${DateFormat.yMMMEd().format(transactions[index].date)}', // you can use pattern too
