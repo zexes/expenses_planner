@@ -63,7 +63,9 @@ class _MyHomePageState extends State<MyHomePage> {
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.add),
-            onPressed: () => _startAddNewTransaction(context),
+            onPressed: () {
+              _startAddNewTransaction(context);
+            },
           )
         ],
       ),
@@ -87,7 +89,9 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButton: FloatingActionButton(
         tooltip: 'Add new Transaction',
         child: Icon(Icons.add),
-        onPressed: () => _startAddNewTransaction(context),
+        onPressed: () {
+          _startAddNewTransaction(context);
+        },
       ),
     );
   }
