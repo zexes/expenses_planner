@@ -18,11 +18,11 @@ class Chart extends StatelessWidget {
       );
       double totalSum = 0.0;
 
-      for (int i = 0; i < recentTransactions.length; i++) {
-        if (recentTransactions[i].date.day == weekDay.day &&
-            recentTransactions[i].date.month == weekDay.month &&
-            recentTransactions[i].date.year == weekDay.year) {
-          totalSum += recentTransactions[i].amount;
+      for (Transaction tx in recentTransactions) {
+        if (tx.date.day == weekDay.day &&
+            tx.date.month == weekDay.month &&
+            tx.date.year == weekDay.year) {
+          totalSum += tx.amount;
         }
       }
 
