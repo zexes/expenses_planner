@@ -37,37 +37,25 @@ class TransactionList extends StatelessWidget {
           : ListView.builder(
               itemBuilder: (ctx, index) {
                 return Card(
-                  child: Row(
-                    children: <Widget>[
-                      Container(
-                        margin: EdgeInsets.only(left: 10, right: 15),
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            color: Theme.of(context).primaryColor,
-                            width: 2.0,
-                          ),
-                        ),
-                        padding: EdgeInsets.all(10.0),
-                        child: Text(
-                          '${f.currencySymbol}${transactions[index].amount.toStringAsFixed(2)}',
-                          style: kTextStyler.copyWith(
-                              color: Theme.of(context).primaryColor),
+                  elevation: 5.0,
+                  margin: EdgeInsets.symmetric(vertical: 8.0, horizontal: 5.0),
+                  child: ListTile(
+                    leading: CircleAvatar(
+                      radius: 30.0,
+                      child: Padding(
+                        padding: const EdgeInsets.all(6.0),
+                        child: FittedBox(
+                          child: Text(
+                              '${f.currencySymbol}${transactions[index].amount.toStringAsFixed(2)}'),
                         ),
                       ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Text(
-                            '${transactions[index].title}',
-                            style: Theme.of(context).textTheme.title,
-                          ),
-                          Text(
-                              '${DateFormat.yMMMEd().format(transactions[index].date)}', // you can use pattern too
-                              style: kTextStyler.copyWith(
-                                  color: Colors.grey, fontSize: 15)),
-                        ],
-                      )
-                    ],
+                    ),
+                    title: Text(
+                      transactions[index].title,
+                      style: Theme.of(context).textTheme.title,
+                    ),
+                    subtitle: Text(
+                        DateFormat.yMMMEd().format(transactions[index].date)),
                   ),
                 );
               },
