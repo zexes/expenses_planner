@@ -20,8 +20,8 @@ class MyApp extends StatelessWidget {
         accentColor: Colors.amber,
         fontFamily: 'Quicksand',
         textTheme: ThemeData.light().textTheme.copyWith(
-              title: kThemeText.copyWith(fontSize: 18),
-            ),
+            title: kThemeText.copyWith(fontSize: 18),
+            button: TextStyle(color: Colors.white)),
         appBarTheme: AppBarTheme(
           textTheme: ThemeData.light().textTheme.copyWith(
                 title: kThemeText,
