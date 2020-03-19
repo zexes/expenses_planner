@@ -134,6 +134,16 @@ class _MyHomePageState extends State<MyHomePage> {
           deleteTxn: _deleteTransaction,
           deleteTxn2: _deleteTransaction2),
     );
+
+    Container chartAboveList(double height) {
+      return Container(
+          height: (MediaQuery.of(context).size.height -
+                  appBar.preferredSize.height -
+                  MediaQuery.of(context).padding.top) *
+              height,
+          child: Chart(recentTransactions: _recentTransactions));
+    }
+
     return Scaffold(
       appBar: appBar,
       body: SingleChildScrollView(
@@ -155,23 +165,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ],
               ),
-            if (!isLandscape)
-              Container(
-                  height: (MediaQuery.of(context).size.height -
-                          appBar.preferredSize.height -
-                          MediaQuery.of(context).padding.top) *
-                      0.3,
-                  child: Chart(recentTransactions: _recentTransactions)),
+            if (!isLandscape) chartAboveList(0.3),
             if (!isLandscape) txList,
-            if (isLandscape)
-              _showChart
-                  ? Container(
-                      height: (MediaQuery.of(context).size.height -
-                              appBar.preferredSize.height -
-                              MediaQuery.of(context).padding.top) *
-                          0.7,
-                      child: Chart(recentTransactions: _recentTransactions))
-                  : txList,
+            if (isLandscape) _showChart ? chartAboveList(0.7) : txList,
           ],
         ),
       ),
