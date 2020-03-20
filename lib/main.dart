@@ -175,9 +175,7 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButton: FloatingActionButton(
         tooltip: 'Add new Transaction',
         child: Icon(Icons.add),
-        onPressed: () {
-          _startAddNewTransaction(context);
-        },
+        onPressed: () => _startAddNewTransaction(context),
       ),
     );
   }
