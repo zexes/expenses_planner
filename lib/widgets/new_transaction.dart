@@ -9,7 +9,7 @@ import './adaptive_flat_button.dart';
 class NewTransaction extends StatefulWidget {
   final Function addTx;
 
-  NewTransaction({this.addTx});
+  const NewTransaction({this.addTx});
 
   @override
   _NewTransactionState createState() => _NewTransactionState();
@@ -66,16 +66,16 @@ class _NewTransactionState extends State<NewTransaction> {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: <Widget>[
               TextField(
-                decoration: InputDecoration(labelText: 'Title'),
+                decoration: const InputDecoration(labelText: 'Title'),
                 controller: _titleController,
                 onSubmitted: (_) => _submitData(),
               ),
               TextField(
-                decoration: InputDecoration(labelText: 'Amount'),
+                decoration: const InputDecoration(labelText: 'Amount'),
                 controller: _amountController,
 //              keyboardType: TextInputType.number,
                 keyboardType:
-                    TextInputType.numberWithOptions(decimal: true), //IOS
+                    const TextInputType.numberWithOptions(decimal: true), //IOS
                 onSubmitted: (_) => _submitData(),
               ),
               Container(
@@ -96,7 +96,7 @@ class _NewTransactionState extends State<NewTransaction> {
                 ),
               ),
               RaisedButton(
-                child: Text('Add Transaction'),
+                child: const Text('Add Transaction'),
                 color: Theme.of(context).primaryColor,
                 textColor: Theme.of(context).textTheme.button.color,
                 onPressed: _submitData,

@@ -5,7 +5,7 @@ class MyAlert {
   final BuildContext context;
   final Function onPressed;
 
-  MyAlert({this.context, this.onPressed});
+  const MyAlert({this.context, this.onPressed});
 
   void executeAlert() {
     Alert(
@@ -16,12 +16,12 @@ class MyAlert {
       buttons: [
         DialogButton(
           color: Colors.red,
-          child: Text("Yes"),
+          child: const Text("Yes"),
           onPressed: onPressed,
         ),
         DialogButton(
           color: Colors.green,
-          child: Text("No"),
+          child: const Text("No"),
           onPressed: () => Navigator.of(context).pop(),
         ),
       ],

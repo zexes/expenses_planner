@@ -7,7 +7,7 @@ class AdaptiveFlatButton extends StatelessWidget {
   final String text;
   final Function onPressed;
 
-  AdaptiveFlatButton({this.text, this.onPressed});
+  const AdaptiveFlatButton({this.text, this.onPressed});
 
   @override
   Widget build(BuildContext context) {
@@ -15,13 +15,13 @@ class AdaptiveFlatButton extends StatelessWidget {
         ? CupertinoButton(
             child: Text(
               text,
-              style: TextStyle(fontWeight: FontWeight.bold),
+              style: const TextStyle(fontWeight: FontWeight.bold),
             ),
             onPressed: onPressed,
           )
         : FlatButton(
             textColor: Theme.of(context).primaryColor,
-            child: Text(
+            child: const Text(
               'Choose Date',
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
