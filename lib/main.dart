@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:expenses_planner/alert.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 import './widgets/new_transaction.dart';
 import './widgets/transaction_list.dart';
@@ -129,7 +128,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
     final PreferredSizeWidget appBar = Platform.isIOS
         ? CupertinoNavigationBar(
-            middle: Text('Personal Expenses'),
+            middle: const Text('Personal Expenses'),
             trailing: Row(
               mainAxisSize:
                   MainAxisSize.min, //IOS Navigation Bar to show other content
@@ -145,7 +144,7 @@ class _MyHomePageState extends State<MyHomePage> {
             title: const Text('Personal Expenses'),
             actions: <Widget>[
               IconButton(
-                icon: const Icon(Icons.add),
+                icon: Icon(Icons.add),
                 onPressed: () => _startAddNewTransaction(context),
               )
             ],
@@ -171,33 +170,42 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Chart(recentTransactions: _recentTransactions));
     }
 
+    Widget switchMode() {
+      return Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Text(
+            'show chart',
+            style: Theme.of(context).textTheme.title,
+          ),
+          Switch.adaptive(
+            activeColor: Theme.of(context).accentColor,
+            value: _showChart,
+            onChanged: (val) {
+              setState(() {
+                _showChart = val;
+              });
+            },
+          ),
+        ],
+      );
+    }
+
+    List<Widget> _buildPortraitContent(double height) {
+      return [chartAboveList(height), txList];
+    }
+
+    List<Widget> _buildLandScapeContent(double height) {
+      return [switchMode(), _showChart ? chartAboveList(height) : txList];
+    }
+
     final pageBody = SafeArea(
       child: SingleChildScrollView(
         //Single Child Scroll Implemented here
         child: Column(
           children: <Widget>[
-            if (isLandscape)
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Text(
-                    'show chart',
-                    style: Theme.of(context).textTheme.title,
-                  ),
-                  Switch.adaptive(
-                    activeColor: Theme.of(context).accentColor,
-                    value: _showChart,
-                    onChanged: (val) {
-                      setState(() {
-                        _showChart = val;
-                      });
-                    },
-                  ),
-                ],
-              ),
-            if (!isLandscape) chartAboveList(0.3),
-            if (!isLandscape) txList,
-            if (isLandscape) _showChart ? chartAboveList(0.7) : txList,
+            if (isLandscape) ..._buildLandScapeContent(0.7),
+            if (!isLandscape) ..._buildPortraitContent(0.3),
           ],
         ),
       ),
