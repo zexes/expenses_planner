@@ -1,4 +1,3 @@
-import '../constants/constants.dart';
 import 'package:intl/intl.dart';
 
 import '../model/transaction.dart';

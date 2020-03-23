@@ -1,8 +1,10 @@
 import 'dart:io';
 
+import 'package:expenses_planner/alert.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 import './widgets/new_transaction.dart';
 import './widgets/transaction_list.dart';
@@ -98,15 +100,27 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void _deleteTransaction(String id) {
-    setState(() {
-      _userTransactions.removeWhere((tx) => tx.id == id);
-    });
+    MyAlert(
+      context: context,
+      onPressed: () {
+        setState(() {
+          _userTransactions.removeWhere((tx) => tx.id == id);
+        });
+        Navigator.of(context).pop();
+      },
+    ).executeAlert();
   }
 
   void _deleteTransaction2(int index) {
-    setState(() {
-      _userTransactions.removeAt(index);
-    });
+    MyAlert(
+      context: context,
+      onPressed: () {
+        setState(() {
+          _userTransactions.removeAt(index);
+        });
+        Navigator.of(context).pop();
+      },
+    ).executeAlert();
   }
 
   @override
