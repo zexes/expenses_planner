@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:expenses_planner/alert.dart';
+import 'package:expenses_planner/utility/alert.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -121,12 +121,8 @@ class _MyHomePageState extends State<MyHomePage> {
     ).executeAlert();
   }
 
-  @override
-  Widget build(BuildContext context) {
-    final mediaQuery = MediaQuery.of(context);
-    final isLandscape = mediaQuery.orientation == Orientation.landscape;
-
-    final PreferredSizeWidget appBar = Platform.isIOS
+  Widget buildAppBar() {
+    return Platform.isIOS
         ? CupertinoNavigationBar(
             middle: const Text('Personal Expenses'),
             trailing: Row(
@@ -149,6 +145,13 @@ class _MyHomePageState extends State<MyHomePage> {
               )
             ],
           );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final mediaQuery = MediaQuery.of(context);
+    final isLandscape = mediaQuery.orientation == Orientation.landscape;
+    final PreferredSizeWidget appBar = buildAppBar();
 
     final txList = Container(
       height: (mediaQuery.size.height -
