@@ -2,8 +2,6 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:rflutter_alert/rflutter_alert.dart';
 
 import './widgets/new_transaction.dart';
 import './widgets/transaction_list.dart';
@@ -13,10 +11,10 @@ import './widgets/chart.dart';
 import 'utility/alert.dart';
 
 void main() {
-  SystemChrome.setPreferredOrientations([
-    DeviceOrientation.portraitUp,
-    DeviceOrientation.portraitDown,
-  ]);
+//  SystemChrome.setPreferredOrientations([
+//    DeviceOrientation.portraitUp,
+//    DeviceOrientation.portraitDown,
+//  ]);
   runApp(MyApp());
 }
 
@@ -29,7 +27,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.purple,
         accentColor: Colors.amber,
-//        errorColor: Colors.red,
+        errorColor: Colors.red,
         fontFamily: 'Quicksand',
         textTheme: ThemeData.light().textTheme.copyWith(
             title: kThemeText.copyWith(fontSize: 18),
@@ -173,9 +171,10 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
               mediaQuery.padding.top) *
           0.7,
       child: TransactionList(
-          transactions: _userTransactions,
-          deleteTxn: _deleteTransaction,
-          deleteTxn2: _deleteTransaction2),
+        transactions: _userTransactions,
+        deleteTxn: _deleteTransaction,
+        deleteTxn2: _deleteTransaction2,
+      ),
     );
 
     Container chartAboveList(double height) {
