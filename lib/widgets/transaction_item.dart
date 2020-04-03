@@ -31,13 +31,14 @@ class _TransactionItemState extends State<TransactionItem> {
   void initState() {
     super.initState();
     const availableColors = [
-      Colors.black,
+      Colors.yellow,
       Colors.purple,
       Colors.blue,
       Colors.green,
+      Colors.red
     ];
 
-    _bgColor = availableColors[Random().nextInt(4)];
+    _bgColor = availableColors[Random().nextInt(5)];
   }
 
   @override
