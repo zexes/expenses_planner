@@ -40,25 +40,6 @@ class TransactionList extends StatelessWidget {
               ],
             );
           })
-//        : ListView(children: [
-//            ...transactions
-//                .asMap()
-//                .map(
-//                  (i, tx) => MapEntry(
-//                    i,
-//                    TransactionItem(
-//                      key: ValueKey(tx.id),
-//                      f: f,
-//                      transaction: tx,
-//                      deleteTxn: deleteTxn,
-//                      deleteTxn2: deleteTxn2,
-//                      index: i,
-//                    ),
-//                  ),
-//                )
-//                .values
-//                .toList(),
-//          ]);
         : ListView.separated(
             itemCount: transactions.length,
             separatorBuilder: (_, __) => Divider(),
