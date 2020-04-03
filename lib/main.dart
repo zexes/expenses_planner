@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Personal Expenses',
       theme: ThemeData(
-        primarySwatch: Colors.purple,
+        primarySwatch: Colors.green,
         accentColor: Colors.amber,
         errorColor: Colors.red,
         fontFamily: 'Quicksand',
@@ -36,6 +36,13 @@ class MyApp extends StatelessWidget {
           textTheme: ThemeData.light().textTheme.copyWith(
                 title: kThemeText,
               ),
+        ),
+        dividerTheme: DividerThemeData(
+          space: 05,
+          thickness: 2,
+          color: Colors.green,
+          indent: 05,
+          endIndent: 05,
         ),
       ),
       home: MyHomePage(),
